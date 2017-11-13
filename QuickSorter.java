@@ -7,6 +7,7 @@ public class QuickSorter {
 			quickSort(arr, lo, pivotIndex -1);
 			quickSort(arr, pivotIndex + 1, hi);
 		}
+		
 	}
 	
 	public static int partition(int[] arr, int lo, int hi) {
@@ -14,13 +15,19 @@ public class QuickSorter {
 		int i = 1;
 		int j = arr.length - 1;
 		
-		while (i != j) {
-			if (arr[i] < arr[pivIndex]) {
+		while (i <= j) {
+			while (arr[i] < arr[pivIndex]) {
 				i++;
-			} else {
-				if (arr[j] > arr[pivIndex]) {
-					j++;
 				}
+			while (arr[j] < arr[pivIndex]) {
+				j--;
+			}
+			if (i <= j) {
+				int temp = i;
+				i = j;
+				j = temp;
+				i++;
+				j--;
 			}
 		}
 		
